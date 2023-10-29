@@ -47,7 +47,7 @@ export class App extends Component {
   };
   galleryHandler = event => {
     if (event.target.nodeName === 'LI' || event.target.nodeName === 'IMG') {
-      this.setState({ actionID: event.target.id, modalOpen: true });
+      this.setState({ actionID: Number(event.target.id), modalOpen: true });
     }
   };
   loadMoreHandler = () => {
@@ -85,7 +85,7 @@ export class App extends Component {
         {this.state.modalOpen && (
           <Modal
             image={this.state.images.filter(
-              image => image.id == this.state.actionID
+              image => image.id === this.state.actionID
             )}
             handleFunction={this.closeModal}
           />
