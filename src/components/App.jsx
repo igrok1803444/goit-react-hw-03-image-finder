@@ -47,12 +47,14 @@ export class App extends Component {
   };
   galleryHandler = event => {
     if (event.target.nodeName === 'LI' || event.target.nodeName === 'IMG') {
-      console.log(event);
       this.setState({ actionID: event.target.id, modalOpen: true });
     }
   };
   loadMoreHandler = () => {
     this.setState(prevState => ({ page: prevState.page + 1 }));
+  };
+  closeModal = () => {
+    this.setState({ modalOpen: false });
   };
   render() {
     return (
@@ -85,6 +87,7 @@ export class App extends Component {
             image={this.state.images.filter(
               image => image.id == this.state.actionID
             )}
+            handleFunction={this.closeModal}
           />
         )}
       </>
